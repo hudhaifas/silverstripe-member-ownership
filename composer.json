@@ -23,6 +23,7 @@
     "extra": {
         "installer-name": "member-ownership",
         "expose": [
+            "res/css"
         ]
     }
 }

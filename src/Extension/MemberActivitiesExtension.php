@@ -4,8 +4,10 @@ namespace HudhaifaS\Extension;
 
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\ORM\GroupedList;
 use SilverStripe\Security\Security;
 use SilverStripe\Versioned\Versioned;
+use SilverStripe\View\Requirements;
 
 /**
  *
@@ -20,6 +22,14 @@ class MemberActivitiesExtension
     private static $tracked_classes = array(
     );
 
+    public function onAfterInit() {
+        Requirements::css("hudhaifas/silverstripe-member-ownership: res/css/timeline.css");
+
+        if ($this->owner->hasMethod('isRTL') && $this->owner->isRTL()) {
+            Requirements::css("hudhaifas/silverstripe-member-ownership: res/css/timeline-rtl.css");
+        }
+    }
+
     public function getLastCreatedObjects($limit = 6) {
         $list = ArrayList::create([]);
 
@@ -28,9 +38,10 @@ class MemberActivitiesExtension
         }
 
 //        return $list;
-        return $list
-                        ->sort('Created DESC')
-                        ->limit($limit);
+        return GroupedList::create($list
+                                ->sort('Created DESC')
+                                ->limit($limit)
+        );
     }
 
     public function getLastCreatedObject($clazz, $limit) {
@@ -56,9 +67,10 @@ class MemberActivitiesExtension
         }
 
 //        return $list;
-        return $list
-                        ->sort('LastEdited DESC')
-                        ->limit($limit);
+        return GroupedList::create($list
+                                ->sort('LastEdited DESC')
+                                ->limit($limit)
+        );
     }
 
     public function getLastEditedObject($clazz, $limit) {

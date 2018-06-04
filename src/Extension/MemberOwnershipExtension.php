@@ -52,19 +52,19 @@ class MemberOwnershipExtension
      * @return string
      */
     public function getMonthCreated() {
-        return date('F', strtotime($this->Created));
+        return date('F', strtotime($this->owner->Created));
     }
 
     public function getMonthLastEdited() {
-        return date('F', strtotime($this->LastEdited));
+        return date('F', strtotime($this->owner->LastEdited));
     }
 
     public function getDayCreated() {
-        return date('F', strtotime($this->Created));
+        return date('F d, Y', strtotime($this->owner->Created));
     }
 
     public function getDayLastEdited() {
-        return date('F', strtotime($this->LastEdited));
+        return date('F d, Y', strtotime($this->owner->LastEdited));
     }
 
 }

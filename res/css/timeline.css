@@ -1,0 +1,128 @@
+.timeline {
+  position: relative;
+  padding: 21px 0px 10px;
+  margin-top: 4px;
+  margin-bottom: 30px;
+}
+.timeline .line {
+  position: absolute;
+  width: 4px;
+  display: block;
+  background: currentColor;
+  top: 0px;
+  bottom: 0px;
+  margin-left: 30px;
+}
+.timeline .line::before {
+  top: -4px;
+  content: '';
+  position: absolute;
+  left: -4px;
+  width: 12px;
+  height: 12px;
+  display: block;
+  border-radius: 50%;
+  background: currentColor;
+}
+.timeline .line::after {
+  bottom: -4px;
+  content: '';
+  position: absolute;
+  left: -4px;
+  width: 12px;
+  height: 12px;
+  display: block;
+  border-radius: 50%;
+  background: currentColor;
+}
+.timeline .separator {
+  border-top: 1px solid currentColor;
+  padding: 5px;
+  padding-left: 40px;
+  font-style: italic;
+  font-size: .9em;
+  margin-left: 30px;
+}
+.timeline .panel {
+  position: relative;
+  margin: 10px 0px 21px 70px;
+  clear: both;
+}
+.timeline .panel::before {
+  position: absolute;
+  display: block;
+  top: 8px;
+  left: -24px;
+  content: '';
+  width: 0px;
+  height: 0px;
+  border: inherit;
+  border-width: 12px;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+.timeline .panel .panel-heading.icon {
+  background: aquamarine;
+  display: block;
+  position: absolute;
+  padding: 0px;
+  border-radius: 50%;
+  text-align: center;
+  float: left;
+}
+.timeline .panel .panel-heading.icon * {
+  vertical-align: middle;
+}
+.timeline .panel.panel-date {
+  margin: 30px 0px 10px 70px;
+}
+.timeline .panel.panel-date .panel-heading.icon {
+  background: #eee;
+  border: 2px solid currentColor;
+  left: -59px;
+  width: 40px;
+  height: 40px;
+}
+.timeline .panel.panel-date .panel-heading.icon * {
+  font-size: 20px;
+  line-height: 38px;
+}
+.timeline .panel.panel-date .panel-body {
+  font-size: 16px;
+  padding: 6px 0;
+}
+.timeline .panel.panel-activity {
+  margin: 8px 0px 8px 70px;
+}
+.timeline .panel.panel-activity .panel-heading.icon {
+  background: #fff;
+  border: 1px solid currentColor;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  left: -50px;
+  width: 24px;
+  height: 24px;
+}
+.timeline .panel.panel-activity .panel-heading.icon * {
+  font-size: 14px;
+  line-height: 22px;
+}
+.timeline .panel.panel-activity .panel-body {
+  font-size: 12px;
+  padding: 2px 6px;
+}
+.timeline .panel-outline {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+.timeline .panel-outline .panel-body {
+  padding: 10px 0px;
+}
+.timeline .panel-outline .panel-heading:not(.icon) {
+  display: none;
+}
+.timeline .panel-outline .panel-footer {
+  display: none;
+}
+/*# sourceMappingURL=timeline.css.map */
