@@ -30,7 +30,7 @@ class MemberActivitiesExtension
         }
     }
 
-    public function getLastCreatedObjects($limit = 6) {
+    public function getLastCreatedObjects($limit = 10) {
         $list = ArrayList::create([]);
 
         foreach ($this->owner->config()->tracked_classes as $clazz) {
@@ -59,7 +59,7 @@ class MemberActivitiesExtension
                         ->limit($limit);
     }
 
-    public function getLastEditedObjects($limit = 6) {
+    public function getLastEditedObjects($limit = 10) {
         $list = ArrayList::create([]);
 
         foreach ($this->owner->config()->tracked_classes as $clazz) {
