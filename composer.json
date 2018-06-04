@@ -1,0 +1,28 @@
+{
+    "name": "hudhaifas/silverstripe-member-ownership",
+    "description": "Member Ownership of dataobjects.",
+    "type": "silverstripe-vendormodule",
+    "homepage": "https://github.com/hudhaifas/silverstripe-member-ownership",
+    "keywords": ["silverstripe", "dataobject", "member", "ownership"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hudhaifa Shatnawi",
+            "email": "me@hudhaifa.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/hudhaifas/silverstripe-member-ownership/issues"
+    },
+    "require": {
+        "silverstripe/framework": "^4",
+        "silverstripe/cms": "^4",
+        "silverstripe/vendor-plugin": "^1.0",
+        "hudhaifas/silverstripe-dataobject-manager": "dev-master"
+    },
+    "extra": {
+        "installer-name": "member-ownership",
+        "expose": [
+        ]
+    }
+}
