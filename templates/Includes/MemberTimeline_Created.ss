@@ -9,7 +9,7 @@
         </div>
 
         <div class="panel-body">
-            <strong>$DayCreated</strong>.
+            <strong>$DayCreated</strong>
         </div>
     </article>
 
