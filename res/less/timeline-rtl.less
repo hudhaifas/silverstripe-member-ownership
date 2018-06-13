@@ -1,0 +1,55 @@
+.timeline {
+    .line {
+        margin-left: auto;
+        margin-right: 30px;
+
+        &::before {
+            left: auto;
+            right: -4px;
+        }
+
+        &::after {
+            left: auto;
+            right: -4px;
+        }
+    }
+
+    .separator {
+        padding-left: auto;
+        padding-right: 40px;
+        margin-left: auto;
+        margin-right: 30px;
+    }
+
+    .panel {
+        margin: 10px 70px 21px 0px;
+
+        &::before {
+            left: auto;
+            right: -24px;
+            border-right-color: transparent;
+        }
+
+        .panel-heading.icon {
+            float: right;
+        }
+
+        &.panel-date {
+            margin: 30px 70px 10px 0px;
+
+            .panel-heading.icon {
+                left: auto;
+                right: -59px;
+            }
+        }
+
+        &.panel-activity {
+            margin: 8px 70px 8px 0px;
+
+            .panel-heading.icon {
+                left: auto;
+                right: -50px;
+            }
+        }
+    }
+}
