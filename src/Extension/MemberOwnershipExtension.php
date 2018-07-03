@@ -19,6 +19,21 @@ class MemberOwnershipExtension
         'EditedBy' => Member::class,
     ];
 
+    /**
+     * Field used to hold flag indicating the next write should be without a new ownership
+     */
+    const NEXT_WRITE_WITHOUT_OWNERSHIP = 'NextWriteWithoutOwnership';
+
+    /**
+     * Ensure versioned page doesn't attempt to virtualise these non-db fields
+     *
+     * @config
+     * @var array
+     */
+    private static $non_virtual_fields = [
+        self::NEXT_WRITE_WITHOUT_OWNERSHIP,
+    ];
+
     public function updateSummaryFields(&$fields) {
         $fields['CreatedBy.Title'] = _t('DataObjectExtension.CREATED_BY', 'Created By');
         $fields['EditedBy.Title'] = _t('DataObjectExtension.EDITED_BY', 'Edited By');
@@ -37,7 +52,22 @@ class MemberOwnershipExtension
         $fields->removeFieldFromTab('Root.Main', 'EditedByID');
     }
 
+    /**
+     * Perform a write without affecting the ownership.
+     *
+     * @return int The ID of the record
+     */
+    public function writeWithoutOwnership() {
+        $this->setNextWriteWithoutOwnership(true);
+
+        return $this->owner->write();
+    }
+
     public function onBeforeWrite() {
+        if ($this->getNextWriteWithoutOwnership()) {
+            return;
+        }
+
         if (Member::currentUserID()) {
             if (!$this->owner->CreatedByID) {
                 $this->owner->CreatedByID = Member::currentUserID();
@@ -45,6 +75,29 @@ class MemberOwnershipExtension
 
             $this->owner->EditedByID = Member::currentUserID();
         }
+    }
+
+    public function onAfterWrite() {
+        $this->setNextWriteWithoutOwnership(false);
+    }
+
+    /**
+     * Check if next write is without ownership
+     *
+     * @return bool
+     */
+    public function getNextWriteWithoutOwnership() {
+        return $this->owner->getField(self::NEXT_WRITE_WITHOUT_OWNERSHIP);
+    }
+
+    /**
+     * Set if next write should be without ownership or not
+     *
+     * @param bool $flag
+     * @return DataObject owner
+     */
+    public function setNextWriteWithoutOwnership($flag) {
+        return $this->owner->setField(self::NEXT_WRITE_WITHOUT_OWNERSHIP, $flag);
     }
 
     /**
