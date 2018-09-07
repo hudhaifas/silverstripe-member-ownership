@@ -17,10 +17,8 @@ use SilverStripe\View\Requirements;
 class MemberActivitiesExtension
         extends DataExtension {
 
-    private static $allowed_actions = array(
-    );
-    private static $tracked_classes = array(
-    );
+    private static $allowed_actions = [];
+    private static $tracked_classes = [];
 
     public function onAfterInit() {
         Requirements::css("hudhaifas/silverstripe-member-ownership: res/css/timeline.css");
