@@ -10,8 +10,8 @@ Member Ownership of DataObjects
 ## Usage
 
 ### Requirements
-- SilverStripe Framework 4.x
-- SilverStripe CMS 4.x
+- SilverStripe Framework 5.x
+- SilverStripe CMS 5.x
 
 ### Installation
 - Install the module through composer:
